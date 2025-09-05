@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(changeSlide, 4000);
   }
 
+  
+
   // ---------------- SHUFFLE ----------------
   function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -96,17 +98,27 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ---------------- SCROLL AVEC OFFSET (header fixe) ----------------
-  const header = document.querySelector('header');
-  const navLinks = document.querySelectorAll('nav a[href^="#"]');
-  navLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('href').substring(1);
-      const targetSection = document.getElementById(targetId);
-      if (!targetSection) return;
-      const headerHeight = header ? header.offsetHeight : 0;
-      const targetPosition = targetSection.offsetTop - headerHeight;
-      window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-    });
+const header = document.querySelector('header');
+const navLinks = document.querySelectorAll('nav a[href^="#"]');
+
+navLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href').substring(1);
+    const targetSection = document.getElementById(targetId);
+    if (!targetSection) return;
+
+    const headerHeight = header ? header.offsetHeight : 0;
+
+    // Décalage spécifique pour #separation
+    let extraOffset = 0;
+    if (targetId === "separation") {
+      // Ajuste cette valeur pour que le bandeau ne recouvre pas le h2
+      extraOffset = 50; 
+    }
+
+    const targetPosition = targetSection.offsetTop - headerHeight - extraOffset;
+    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
   });
+});
 });
