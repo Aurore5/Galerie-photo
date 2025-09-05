@@ -4,6 +4,7 @@ body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
 
 /* Header */
 header {
+  font-size: clamp(10px, 4vw, 17px);
   position: fixed;
   top: 0;
   left: 0;
@@ -21,10 +22,12 @@ nav ul { list-style: none; display: flex; gap: 20px; }
 nav a { color: white; text-decoration: none; font-weight: bold; }
 
 /* Section accueil (slideshow) */
+
 .slideshow {
-  margin-top: 70px;
+  margin-top: 70px;   /* garde l’espace pour le header */
+  margin-bottom: 0;   /* supprime la marge en bas */
+  height: 92vh;
   position: relative;
-  height: 90vh;
   overflow: hidden;
 }
 
@@ -57,6 +60,73 @@ nav a { color: white; text-decoration: none; font-weight: bold; }
   background: rgba(0,0,0,0.5);
   padding: 8px 15px;
   border-radius: 5px;
+}
+
+.slideshow .slide,
+.slideshow img {
+  display: block;     /* empêche les espaces blancs liés aux images */
+  margin: 0;          /* supprime toute marge interne */
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px; /* espace avant et après */
+  position: relative;
+  text-align: center;
+}
+
+.separator h2 {
+  font-size: clamp(20px, 4vw, 36px);
+  color: #333;
+  background: white; /* ou la couleur de ton fond */
+  padding: 0 15px;
+  z-index: 1;
+  position: relative;
+}
+
+.separator::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  right: 10%;
+  height: 2px; /* épaisseur de la barre */
+  background: #333; /* couleur de la barre */
+  z-index: 0;
+}
+
+
+.citation {
+  -webkit-column-span: all;
+  column-span: all;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  margin: 0px 0 0 0 !important; /* garde ta marge haute si tu veux */
+
+}
+
+.citation h2 {
+  font-size: clamp(20px, 4vw, 21px);
+  color: #333;
+  background: white; /* ou la couleur de ton fond */
+  padding: 10px 0px;
+  z-index: 1;
+  position: relative;
+  margin: 0;
+  max-width : 100vh;
+  display: inline-block;
+  box-sizing: border-box;
 }
 
 
