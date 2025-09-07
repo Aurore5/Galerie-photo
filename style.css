@@ -120,17 +120,17 @@ nav a {
 }
 
 /* Version PC / écran large */
-@media screen and (min-width: 1400px) {
+@media screen and (min-width: 1024px) {
   .thumbnails-left,
   .thumbnails-right {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: clamp(20px, 3vw, 30px);
+    gap: clamp(15px, 3vw, 30px);
   }
 
   .thumbnails-left img,
   .thumbnails-right img {
-    width: clamp(120px, 12vw, 220px); /* plus grandes mais limitées */
+    width: clamp(100px, 12vw, 220px); /* plus grandes mais limitées */
     aspect-ratio: 3/4;
   }
 }
