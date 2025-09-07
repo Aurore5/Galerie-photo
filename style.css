@@ -152,6 +152,15 @@ nav a {
     height: auto;       /* largeur suit le ratio */
     object-fit: contain;
   }
+
+  .thumbnails-left,
+.thumbnails-right {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* espace flexible */
+  margin-left: 10px;
+  margin-right: 10px;
+}
 }
 
 .slideshow {
