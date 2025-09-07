@@ -146,6 +146,14 @@ nav a {
   }
 }
 
+@media screen and (orientation: portrait) {
+  .main-image {
+    height: 85vh;      /* limite la hauteur */
+    width: auto;       /* largeur suit le ratio */
+    object-fit: contain;
+  }
+}
+
 .slideshow {
   margin-top: 70px;   /* garde l’espace pour le header */
   margin-bottom: 0;   /* supprime la marge en bas */
