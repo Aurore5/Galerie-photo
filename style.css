@@ -120,7 +120,7 @@ nav a {
 }
 
 /* Version PC / écran large */
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1400px) {
   .thumbnails-left,
   .thumbnails-right {
     display: grid;
