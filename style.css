@@ -86,7 +86,7 @@ nav a {
 }
 
 .main-image {
-  width: clamp(250px, 50vw, 600px);  /* entre 250px et 600px */
+  width: clamp(200px, 50vw, 600px);  /* entre 250px et 600px */
   margin-bottom: 30px;
   object-fit: cover;
   flex: 1;
@@ -106,7 +106,7 @@ nav a {
 
 .thumbnails-left img,
 .thumbnails-right img {
-  width: clamp(80px, 18vw, 120px);   /* taille qui s’adapte mais garde max */
+  width: clamp(70px, 12vw, 120px);   /* taille qui s’adapte mais garde max */
   height: auto;
   aspect-ratio: 3/4;
   object-fit: cover;
@@ -130,7 +130,7 @@ nav a {
   }
 
   .main-image {
-  width: clamp(150px, 50vw, 600px);  /* entre 250px et 600px */
+  width: clamp(120px, 25vw, 600px);  /* entre 250px et 600px */
   margin-bottom: 30px;
   object-fit: cover;
   transition: opacity 1s ease-in-out;
@@ -139,7 +139,7 @@ nav a {
 
   .thumbnails-left img,
   .thumbnails-right img {
-    width: clamp(80px, 12vw, 220px); /* plus grandes mais limitées */
+    width: clamp(70px, 10vw, 220px); /* plus grandes mais limitées */
   }
 }
 
