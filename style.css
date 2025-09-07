@@ -36,7 +36,7 @@ nav ul {
 
 nav a {
   color: black;
-  font-size: clamp(12px, 4vw, 16px);
+  font-size: 16px;
   text-decoration: none;
   font-weight: light;
   font-family: regular;
