@@ -79,17 +79,19 @@ nav a {
 .carousel-container {
   margin-top: 30px;
   display: flex;
-  gap: 30px; /* espace entre la grande image et les miniatures */
+  gap: clamp(20px, 5vw, 70px); /* espace flexible */
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap; /* évite le débordement */
 }
 
 .main-image {
-  width: 600px;
-  height: 800px;
+  width: clamp(250px, 50vw, 600px);  /* entre 250px et 600px */
+  height: auto;
+  max-height: 80vh;                  /* pas plus haut que l’écran */
   margin-bottom: 30px;
   object-fit: cover;
-  transition: opacity 1s ease-in-out; /* fondu */
+  transition: opacity 1s ease-in-out;
   opacity: 1;
 }
 
@@ -98,13 +100,14 @@ nav a {
 .thumbnails-right {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: clamp(15px, 3vw, 30px); /* espace flexible */
 }
 
 .thumbnails-left img,
 .thumbnails-right img {
-  width: 120px;
-  height: 160px;
+  width: clamp(80px, 18vw, 120px);   /* taille qui s’adapte mais garde max */
+  height: auto;
+  aspect-ratio: 3/4;
   object-fit: cover;
   cursor: pointer;
   transition: transform 0.3s;
@@ -121,18 +124,14 @@ nav a {
   .thumbnails-left,
   .thumbnails-right {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 colonnes */
-    gap: 30px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(20px, 3vw, 30px);
   }
 
   .thumbnails-left img,
   .thumbnails-right img {
-    width: 220px; /* miniatures plus grandes */
-    height: 300px;
-  }
-
-  .carousel-container {
-    gap: 70px; /* plus d’espace autour de la grande image */
+    width: clamp(120px, 12vw, 220px); /* plus grandes mais limitées */
+    aspect-ratio: 3/4;
   }
 }
 
