@@ -148,7 +148,7 @@ nav a {
 
 @media screen and (orientation: portrait) {
   .main-image {
-    width: 37vw;      /* limite la hauteur */
+    width: 30vw;      /* limite la hauteur */
     height: auto;       /* largeur suit le ratio */
     object-fit: contain;
   }
