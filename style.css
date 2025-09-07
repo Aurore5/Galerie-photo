@@ -148,7 +148,7 @@ nav a {
 
 @media screen and (orientation: portrait) {
   .main-image {
-    width: 32vw;      /* limite la hauteur */
+    width: 33vw;      /* limite la hauteur */
     height: auto;       /* largeur suit le ratio */
     object-fit: contain;
   }
@@ -158,8 +158,8 @@ nav a {
   display: flex;
   flex-direction: column;
   gap: 12px; /* espace flexible */
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 }
 
@@ -345,6 +345,9 @@ nav a {
   .info-container {
     flex-direction: column;
     text-align: left;
+  }
+  .imginfo{
+    margin-left: 10px;
   }
 }
 
