@@ -77,18 +77,21 @@ nav a {
 
 
 .carousel-container {
+  margin-left: clamp(20px, 6vw, 80px);
+  margin-right: clamp(20px, 6vw, 80px);
   margin-top: 30px;
   display: flex;
-  gap: clamp(20px, 5vw, 70px); /* espace flexible */
+  gap: clamp(20px, 5vw, 30px); /* espace flexible */
   align-items: center;
   justify-content: center;
   flex-wrap: wrap; /* évite le débordement */
 }
 
 .main-image {
-  width: clamp(200px, 50vw, 600px);  /* entre 250px et 600px */
+  max-height: 80vh;
+  width: auto;         /* largeur s’ajuste automatiquement */
+  object-fit: contain;
   margin-bottom: 30px;
-  object-fit: cover;
   flex: 1;
   transition: opacity 1s ease-in-out;
   opacity: 1;
@@ -97,8 +100,6 @@ nav a {
 /* Miniatures par défaut (mobile) */
 .thumbnails-left,
 .thumbnails-right {
-  margin-left: 30px;
-  margin-right: 30px;
   display: flex;
   flex-direction: column;
   gap: clamp(15px, 3vw, 30px); /* espace flexible */
@@ -126,13 +127,15 @@ nav a {
   .thumbnails-right {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: clamp(15px, 3vw, 30px);
+    gap: clamp(20px, 30px, 40px);
   }
 
   .main-image {
-  width: clamp(120px, 25vw, 600px);  /* entre 250px et 600px */
+    height: 85vh;
+  /*width: clamp(120px, 25vw, 600px);  /* entre 250px et 600px */
   margin-bottom: 30px;
-  object-fit: cover;
+  width: auto;         /* largeur s’ajuste automatiquement */
+  object-fit: contain;
   transition: opacity 1s ease-in-out;
   opacity: 1;
 }
