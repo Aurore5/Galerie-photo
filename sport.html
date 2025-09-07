@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon Portfolio Photo</title>
+  <!-- Lien vers le CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1>Sport </h1>
+       <nav>
+    <ul class="main-menu">
+      <li><a href="index.html">Accueil</a></li>
+
+      <!-- dropdown correct : li -> a + ul.submenu -->
+      <li class="dropdown">
+        <a href="#" class="drop-toggle" aria-haspopup="true" aria-expanded="false">Mes projets  ▾</a>
+        <ul class="submenu" aria-label="Sous-menu Mes projets">
+          <li><a href="exposition.html">Exposition</a></li>
+          <li><a href="echec.html">Echec</a></li>
+          <li><a href="musee.html">Museum</a></li>
+          <li><a href="plage.html">Plage</a></li>
+          <li><a href="sport.html">Sport</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+      <a href="#" class="drop-toggle" aria-haspopup="true" aria-expanded="false">Information  ▾</a>
+      <ul class="submenu" aria-label="Sous-menu Mes projets">
+      <li><a href="apropos.html">Présentation</a></li>
+      <li><a href="apropos.html#apropos">À propos</a></li>
+      <li><a href="apropos.html#contact">Contact</a></li>
+    </ul>
+    </li>
+  </nav>
+  </header>
+<!--
+  <section id="photo1">
+    <img src="img/ballon_photo2.png" alt="Ballon photo 2" class="photochoisie">
+  </section>-->
+
+  <section class="gallery" id="galerie">
+    <img src="img/Sport_photo1.jpg" alt="Sport photo 1">
+    <img src="img/Sport_photo2.jpg" alt="Sport photo 2">
+    <img src="img/Sport_photo3.jpg" alt="Sport photo 3">
+    </section>
+
+
+    <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Mon Portfolio - Tous droits réservés</p>
+  </footer>
+  
+     <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <span class="arrow left">&#10094;</span>
+    <img src="" alt="Photo en grand">
+    <span class="arrow right">&#10095;</span>
+  </div>
+
+    <script src="javascript.js" defer></script>
+
+</body>
+
+</html>
