@@ -126,9 +126,17 @@ nav a {
     gap: clamp(15px, 3vw, 30px);
   }
 
+  .main-image {
+  width: clamp(150px, 50vw, 600px);  /* entre 250px et 600px */
+  margin-bottom: 30px;
+  object-fit: cover;
+  transition: opacity 1s ease-in-out;
+  opacity: 1;
+}
+
   .thumbnails-left img,
   .thumbnails-right img {
-    width: clamp(100px, 12vw, 220px); /* plus grandes mais limitées */
+    width: clamp(80px, 12vw, 220px); /* plus grandes mais limitées */
   }
 }
 
