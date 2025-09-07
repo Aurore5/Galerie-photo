@@ -87,7 +87,6 @@ nav a {
 
 .main-image {
   width: clamp(250px, 50vw, 600px);  /* entre 250px et 600px */
-  height: auto;                 /* pas plus haut que l’écran */
   margin-bottom: 30px;
   object-fit: cover;
   transition: opacity 1s ease-in-out;
