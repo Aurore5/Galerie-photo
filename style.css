@@ -16,7 +16,7 @@ header {
 
 header h1 {
   font-size: 1.6rem;
-  font-family: Bold;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-weight: bold;
   margin: 0;
 }
@@ -77,11 +77,11 @@ nav a {
 
 
 .carousel-container {
-  margin-left: clamp(15px, 6vw, 80px);
-  margin-right: clamp(15px, 6vw, 80px);
+  margin-left: clamp(12px, 6vw, 80px);
+  margin-right: clamp(12px, 6vw, 80px);
   margin-top: 25px;
   display: flex;
-  gap: clamp(20px, 5vw, 30px); /* espace flexible */
+  gap: clamp(15px, 5vw, 30px); /* espace flexible */
   align-items: center;
   justify-content: center;
   flex-wrap: wrap; /* évite le débordement */
@@ -148,7 +148,7 @@ nav a {
 
 @media screen and (orientation: portrait) {
   .main-image {
-    width: 65%;      /* limite la hauteur */
+    width: 62%;      /* limite la hauteur */
     height: auto;       /* largeur suit le ratio */
     object-fit: contain;
   }
@@ -321,20 +321,21 @@ nav a {
 
 .info-container .about {
   flex: 1; /* prend la moitié chacun */
-  text-align: center;
+  text-align: left;
   padding-right: 50px;
 }
 
 .info-container .about h2 {
   text-align: center;
   margin-top: 80px;
+  margin-bottom: 10px;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
   .info-container {
     flex-direction: column;
-    text-align: center;
+    text-align: left;
   }
 }
 
