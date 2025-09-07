@@ -79,6 +79,7 @@ nav a {
 .carousel-container {
   margin-top: 30px;
   display: flex;
+  max-width: 100vh;
   gap: clamp(20px, 5vw, 70px); /* espace flexible */
   align-items: center;
   justify-content: center;
