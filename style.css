@@ -77,8 +77,8 @@ nav a {
 
 
 .carousel-container {
-  margin-left: clamp(12px, 6vw, 80px);
-  margin-right: clamp(12px, 6vw, 80px);
+  margin-left: clamp(10px, 6vw, 80px);
+  margin-right: clamp(10px, 6vw, 80px);
   margin-top: 25px;
   display: flex;
   gap: clamp(15px, 5vw, 30px); /* espace flexible */
@@ -102,7 +102,7 @@ nav a {
 .thumbnails-right {
   display: flex;
   flex-direction: column;
-  gap: clamp(15px, 3vw, 30px); /* espace flexible */
+  gap: clamp(12px, 3vw, 30px); /* espace flexible */
 }
 
 .thumbnails-left img,
@@ -148,7 +148,7 @@ nav a {
 
 @media screen and (orientation: portrait) {
   .main-image {
-    width: 62%;      /* limite la hauteur */
+    width: 60%;      /* limite la hauteur */
     height: auto;       /* largeur suit le ratio */
     object-fit: contain;
   }
