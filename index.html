@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mon Portfolio Photo</title>
   <!-- Lien vers le CSS -->
@@ -10,20 +9,54 @@
 <body>
   <!-- Header -->
   <header>
-    <h1>Nicolas Vasseur</h1>
+    <h1>NICOLAS VASSEUR</h1>
     <nav>
-      <ul>
-        <li><a href="#accueil">Accueil</a></li>
-        <li><a href="#separation">Galerie</a></li>
-        <li><a href="#about">À propos</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+    <ul class="main-menu">
+      <li><a href="index.html">Accueil</a></li>
+
+      <!-- dropdown correct : li -> a + ul.submenu -->
+      <li class="dropdown">
+        <a href="#" class="drop-toggle" aria-haspopup="true" aria-expanded="false">Mes projets  ▾</a>
+        <ul class="submenu" aria-label="Sous-menu Mes projets">
+          <li><a href="exposition.html">Exposition</a></li>
+          <li><a href="echec.html">Echec</a></li>
+          <li><a href="musee.html">Museum</a></li>
+          <li><a href="plage.html">Plage</a></li>
+          <li><a href="sport.html">Sport</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+      <a href="#" class="drop-toggle" aria-haspopup="true" aria-expanded="false">Information  ▾</a>
+      <ul class="submenu" aria-label="Sous-menu Mes projets">
+      <li><a href="apropos.html">Présentation</a></li>
+      <li><a href="apropos.html#apropos">À propos</a></li>
+      <li><a href="apropos.html#contact">Contact</a></li>
+    </ul>
+    </li>
+  </nav>
   </header>
 
+<div class="carousel-container">
+  <div class="thumbnails-left">
+    <img src="img/japon_photo4.png" alt="Japon photo 4" onclick="changeImage(this)">
+    <img src="img/echec_photo7.png" alt="Echec photo 7" onclick="changeImage(this)">
+    <img src="img/Sport_photo1.jpg" alt="Sport photo 1" onclick="changeImage(this)">
+    <img src="img/chateau_photo4.jpg" alt="Chateau photo 4" onclick="changeImage(this)">
+  </div>
+  <img src="img/chateau_photo3.jpg" alt="Chateau photo 3" class="main-image" id="mainImage">
+  
+  <div class="thumbnails-right">
+    <img src="img/plage_photo26.JPG" alt="Plage photo 26" onclick="changeImage(this)">
+    <img src="img/echec_photo4.png" alt="Echec photo 4" onclick="changeImage(this)">
+    <img src="img/ballon_photo6.png" alt="Ballon photo 6" onclick="changeImage(this)">
+    <img src="img/plage_photo11.jpg" alt="Plage photo 11" onclick="changeImage(this)">
+  </div>
+</div>
+
   <!-- Slideshow -->
-  <section class="slideshow" id="accueil">
-        <!--<div class="slide active">
+  <!--<section class="slideshow" id="accueil">
+        <div class="slide active">
             <img src="img/echec_photo5.jpg" alt="Echec photo 5">-->
             <!--  <div class="caption">Ma première photo</div>-->
         <!--</div>
@@ -36,7 +69,7 @@
             <!-- <div class="caption">Troisième photo</div>-->
          <!--</div>-->
 
-        <div class="slide active"><img src="img/echec_photo6.png" alt="Echec photo 6"></div>
+        <!--<div class="slide active"><img src="img/echec_photo6.png" alt="Echec photo 6"></div>
         <div class="slide"><img src="img/plage_photo28.JPG" alt="Plage photo 28"></div>
         <div class="slide"><img src="img/japon_photo3.png" alt="Japon photo 3"></div>
         <div class="slide"><img src="img/plage_photo8.JPG" alt="Plage photo 8"></div>
@@ -45,7 +78,7 @@
         <div class="slide"><img src="img/plage_photo25.JPG" alt="Plage photo 25"></div>
         <div class="slide"><img src="img/japon_photo4.png" alt="Japon photo 4"></div>
         <div class="slide"><img src="img/chateau_photo4.jpg" alt="Chateau photo 4"></div>
-        <div class="slide"><img src="img/Isa_photo2.jpg" alt="Isa photo 2"></div>
+        <div class="slide"><img src="img/Sport_photo2.jpg" alt="Sport photo 2"></div>
         <div class="slide"><img src="img/plage_photo1.JPG" alt="Plage photo 1"></div>
         <div class="slide"><img src="img/ballon_photo2.png" alt="Ballon photo 2"></div>
         <div class="slide"><img src="img/plage_photo3.JPG" alt="Plage photo 3"></div>
@@ -75,9 +108,9 @@
 
   <section class="citation" id="phrase">
     <h2>"La photographie capte ce que l'oeil oublie, mais que l'âme reconnaît."</h2>
-  </section>
+  </section>-->
 
-  <!-- Galerie -->
+  <!-- Galerie 
   <section class="gallery" id="galerie">
     <img src="img/ballon_photo1.png" alt="Ballon photo 1">
     <img src="img/ballon_photo2.png" alt="Ballon photo 2">
@@ -102,8 +135,8 @@
     <img src="img/chateau_photo3.jpg" alt="Chateau photo 3">
     <img src="img/chateau_photo4.jpg" alt="Chateau photo 4">
     <img src="img/chateau_photo5.jpg" alt="Chateau photo 5">
-    <img src="img/Isa_photo1.jpg" alt="Isa photo 1">
-    <img src="img/Isa_photo2.jpg" alt="Isa photo 2">
+    <img src="img/Sport_photo1.jpg" alt="Sport photo 1">
+    <img src="img/Sport_photo2.jpg" alt="Sport photo 2">
     <img src="img/plage_photo1.JPG" alt="Plage photo 1">
     <img src="img/plage_photo2.jpg" alt="Plage photo 2">
     <img src="img/plage_photo3.JPG" alt="Plage photo 3">
@@ -134,34 +167,34 @@
     <img src="img/plage_photo29.JPG" alt="Plage photo 29">
     <img src="img/plage_photo30.JPG" alt="Plage photo 30">
 
-  </section>
+  </section> -->
 
-  <!-- A propos -->
+  <!-- A propos 
   <section class="about" id="about">
     <h2>À propos</h2>
     <p>Je suis intéressé par le modeling photo et le posing. Ouvert à participer à des shootings et à 
         collaborer avec des photographes ou créateurs, je suis motivé pour contribuer à des projets 
         visuels de qualité. Pour toute proposition de collaboration, n’hésitez pas à me contacter.</p>
-  </section>
+  </section> -->
 
-  <!-- Contact -->
+  <!-- Contact 
   <section class="contact" id="contact">
     <h2>Contact</h2>
     <a href="mailto:tonemail@example.com">Email</a>
     <a href="https://www.linkedin.com/in/tonprofil" target="_blank">LinkedIn</a>
-  </section>
+  </section> -->
 
   <!-- Footer -->
   <footer>
     <p>&copy; 2025 Mon Portfolio - Tous droits réservés</p>
   </footer>
 
-  <!-- Lightbox -->
+  <!-- Lightbox 
   <div class="lightbox" id="lightbox">
     <span class="arrow left">&#10094;</span>
     <img src="" alt="Photo en grand">
     <span class="arrow right">&#10095;</span>
-  </div>
+  </div> -->
 
   <!-- Lien vers le JavaScript -->
   <script src="javascript.js"></script>
