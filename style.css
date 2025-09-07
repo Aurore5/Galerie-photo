@@ -77,8 +77,8 @@ nav a {
 
 
 .carousel-container {
-  margin-left: clamp(20px, 6vw, 80px);
-  margin-right: clamp(20px, 6vw, 80px);
+  margin-left: clamp(15px, 6vw, 80px);
+  margin-right: clamp(15px, 6vw, 80px);
   margin-top: 25px;
   display: flex;
   gap: clamp(20px, 5vw, 30px); /* espace flexible */
