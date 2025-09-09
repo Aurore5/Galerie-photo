@@ -1,6 +1,6 @@
 /* Reset simple */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+body { font-family: Work sans; line-height: 1.6; color: #333; }
 
 /* Header */
 header {
@@ -145,11 +145,11 @@ nav a {
     width: clamp(70px, 10vw, 220px); /* plus grandes mais limitées */
   }
 }
-
+/*
 @media screen and (orientation: portrait) {
   .main-image {
-    width: 33vw;      /* limite la hauteur */
-    height: auto;       /* largeur suit le ratio */
+    width: 32vw;     
+    height: auto;       
     object-fit: contain;
   }
 
@@ -157,10 +157,27 @@ nav a {
 .thumbnails-right {
   display: flex;
   flex-direction: column;
-  gap: 12px; /* espace flexible */
+  gap: 12px; 
   margin-left: 5px;
   margin-right: 5px;
 }
+} */
+@media screen and (max-width: 768px) {
+  .thumbnails-left,
+  .thumbnails-right {
+    display: none !important;
+  }
+
+  .carousel-container {
+    gap: 0; /* plus besoin de l’espace latéral */
+  }
+
+  .main-image {
+    margin: 0 auto; /* centre l’image */
+    display: block;
+    max-width: 95vw; /* l’image prend presque toute la largeur */
+    height: auto;
+  }
 }
 
 .slideshow {
