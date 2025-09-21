@@ -1,5 +1,9 @@
 /* Reset simple */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* { margin: 0; padding: 0; box-sizing: border-box; 
+  overscroll-behavior-x: none; /* bloque le rebond horizontal */
+  overscroll-behavior-y: none; /* bloque le rebond vertical */
+}
+
 body { font-family: Work sans; line-height: 1.6; color: #333; }
 
 /* Header */
@@ -21,6 +25,10 @@ header h1 {
   margin: 0;
 }
 
+ul, li {
+  list-style: none;
+}
+
 nav {
   margin-top: 10px; /* espace entre titre et menu */
 }
@@ -39,7 +47,6 @@ nav a {
   font-size: 16px;
   text-decoration: none;
   font-weight: light;
-  font-family: regular;
 
 }
 
@@ -75,6 +82,15 @@ nav a {
 }
 /* Section accueil (slideshow) */
 
+a {
+  text-decoration: none;
+  color: inherit; /* garde la couleur de base selon l’endroit */
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: gold; /* devient doré au survol */
+}
 
 .carousel-container {
   margin-left: clamp(10px, 6vw, 80px);
@@ -180,86 +196,7 @@ nav a {
   }
 }
 
-.slideshow {
-  margin-top: 70px;   /* garde l’espace pour le header */
-  margin-bottom: 0;   /* supprime la marge en bas */
-  height: 92vh;
-  position: relative;
-  overflow: hidden;
-}
-
-.slideshow .slide {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: opacity 1.5s ease-in-out;
-}
-
-.slideshow .slide.active {
-  opacity: 1;
-}
-
-.slideshow img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.slideshow .caption {
-  position: absolute;
-  bottom: 30px;
-  left: 30px;
-  color: white;
-  font-size: 1.2rem;
-  background: rgba(0,0,0,0.5);
-  padding: 8px 15px;
-  border-radius: 5px;
-}
-
-.slideshow .slide,
-.slideshow img {
-  display: block;     /* empêche les espaces blancs liés aux images */
-  margin: 0;          /* supprime toute marge interne */
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-
-.separator {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 50px; /* espace avant et après */
-  position: relative;
-  text-align: center;
-}
-
-.separator h2 {
-  font-size: clamp(20px, 4vw, 36px);
-  color: #333;
-  background: white; /* ou la couleur de ton fond */
-  padding: 0 15px;
-  z-index: 1;
-  position: relative;
-}
-
-.separator::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 10%;
-  right: 10%;
-  height: 2px; /* épaisseur de la barre */
-  background: #333; /* couleur de la barre */
-  z-index: 0;
-}
-
-
+/*
 .citation {
   -webkit-column-span: all;
   column-span: all;
@@ -269,14 +206,14 @@ nav a {
   text-align: center !important;
   width: 100% !important;
   box-sizing: border-box !important;
-  margin: 0px 0 0 0 !important; /* garde ta marge haute si tu veux */
+  margin: 0px 0 0 0 !important; /* garde ta marge haute si tu veux 
 
 }
 
 .citation h2 {
   font-size: clamp(20px, 4vw, 21px);
   color: #333;
-  background: white; /* ou la couleur de ton fond */
+  background: white; /* ou la couleur de ton fond 
   padding: 10px 0px;
   z-index: 1;
   position: relative;
@@ -284,8 +221,10 @@ nav a {
   max-width : 100vh;
   display: inline-block;
   box-sizing: border-box;
-}
+}*/
 
+
+/**/
 .photochoisie {
   display: block;       /* nécessaire pour que margin auto fonctionne */
   margin: 30px auto 0;  /* 50px en haut, centré horizontalement, 0 en bas */
@@ -293,29 +232,29 @@ nav a {
   max-width: 100%;      /* jamais dépasser la largeur de l'écran */
   height: auto;         /* conserve le ratio */
   max-height: 80vh;     /* optionnel : pas plus de 80% de la hauteur de l'écran */
-}
+} 
 
-/* Galerie “masonry-like” */
+/* Galerie “masonry-like” */ 
 .gallery {
-  column-count: 3; /* nombre de colonnes sur desktop */
-  column-gap: 15px; /* espace entre colonnes */
+  column-count: 3;
+  column-gap: 15px;
   padding: 50px 20px;
 }
 
 .gallery img {
+  display: block;
   width: 100%;
-  margin-bottom: 15px; /* espace vertical régulier */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  transition: transform 0.3s;
-  cursor: pointer;
-  display: block; /* obligatoire pour column layout */
+  height: auto;
+  transition: transform 0.3s ease;
+  cursor: pointer;;
+  will-change: transform; /* optimise l'animation */
 }
 
-/* Galerie : effet hover simple */
-.gallery img:hover {
-  transform: scale(1.06); /* léger zoom */
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-  transition: transform 0.3s, box-shadow 0.3s;
+
+/*Galerie : effet hover simple */
+.gallery img:hover { 
+  filter: brightness(0.6);
+  /* léger zoom */
 }
 
 
@@ -353,8 +292,12 @@ nav a {
 
 .info-container .about h2 {
   text-align: center;
-  margin-top: 80px;
+  margin-top: 175px;
   margin-bottom: 10px;
+}
+
+.info-container .about p a {
+  text-decoration-line: underline;
 }
 
 /* Responsive */
@@ -364,39 +307,45 @@ nav a {
     text-align: left;
   }
   .imginfo{
-    margin-left: 10px;
+    align-items: center;
   }
 }
 
-/* Contact */
-.contact {
-  padding: 0px;
-  text-align: center;
-}
-.contact a {
-  display: inline-block;
-  margin: 10px;
-  padding: 10px 20px;
-  border: 2px solid #333;
-  border-radius: 5px;
-  text-decoration: none;
-  color: #333;
-  transition: background 0.3s, color 0.3s;
-}
-.contact a:hover {
-  background: #333;
-  color: white;
-}
-
-/* Footer */
 footer {
-  margin-top: 30px;
+  display: flex;
+  justify-content: space-between; /* texte à gauche, contact à droite */
+  align-items: center; /* centrage vertical */
   background: #222;
   color: white;
-  text-align: center;
-  padding: 20px;
-  bottom: 0;
+  padding: 15px;
 }
+
+footer p {
+  margin: 0; /* enlever le margin qui décale */
+  margin-left: 15px;
+  font-size: 15px;
+}
+
+footer .contact {
+  text-align: right;
+  margin-right: 20px;
+}
+
+footer .contact a {
+  display: inline-block;
+  margin-left: 20px; /* espace entre les liens */
+  padding: 10px 20px;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #fff;
+  transition: background 0.3s, color 0.3s;
+}
+footer .contact a:hover {
+  background: #fff;
+  color: #222;
+}
+
 
 /* Lightbox */
 .lightbox {
@@ -404,7 +353,8 @@ footer {
   position: fixed;
   z-index: 2000;
   top: 0; left: 0;
-  width: 100%; height: 100%;
+  width: 100%; 
+  height: 100%;
   background: rgba(0,0,0,0.9);
   justify-content: center;
   align-items: center;
@@ -428,15 +378,116 @@ footer {
   cursor: pointer;
   user-select: none;
   padding: 10px;
-  background: rgba(0,0,0,0.3);
   border-radius: 50%;
   transform: translateY(-50%);
 }
-.lightbox .arrow:hover {
-  background: rgba(0,0,0,0.6);
-}
+
 .arrow.left { left: 20px; }
 .arrow.right { right: 20px; }
+
+
+.contact-container {
+  height: 81vh;           /* hauteur totale de l'écran */
+  width: 95vw;            /* largeur totale de l'écran */
+  display: flex;           /* deux colonnes */
+  background-color: #fff;
+  padding: 30px;
+  box-sizing: border-box;
+  gap: 20px;               /* espace entre les colonnes */
+}
+
+.left-side {
+  flex: 1;                    
+  display: flex;
+  align-items: center;      /* centre verticalement le texte */
+  justify-content: center;  /* centre horizontalement le texte */
+  padding: 50px;
+  margin-top: -55px;
+}
+
+.right-side {
+  flex: 1;                    
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* centre verticalement le formulaire */
+  align-items: flex-start;    
+  padding: 20px;
+  margin-right: 20px; /* ajoute un espace à droite */
+  margin-top: -55px;
+}
+
+.contact-title {
+  margin-bottom: 30px;
+}
+
+.form-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Formulaire */
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+form label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+form input, form textarea {
+  width: 100%;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+form button {
+  padding: 12px;
+  /*background-color: #007BFF;*/
+  background-color: #222;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: gold;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;  /* empile verticalement */
+    height: 100vh;           /* hauteur totale */
+    padding: 20px;
+  }
+
+  .left-side {
+    order: 2;                /* texte sous le formulaire */
+    margin-top: 20px;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .right-side {
+    order: 1;
+    width: 100%;
+    justify-content: center;  /* centre verticalement le formulaire */
+    margin-right: 0px; /* ajoute un espace à droite */
+  }
+}
+
 
 html {
   scroll-behavior: smooth;
