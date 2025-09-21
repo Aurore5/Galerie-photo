@@ -112,28 +112,32 @@ document.addEventListener('DOMContentLoaded', () => {
   const images = document.querySelectorAll('.gallery img');
 
 images.forEach(img => {
-  // On récupère les dimensions initiales
-  const width = img.clientWidth;
-  const height = img.clientHeight;
+  img.addEventListener('load', () => {
+    const width = img.clientWidth;
+    const height = img.clientHeight;
 
-  // On crée un wrapper temporaire pour contenir le zoom
-  const wrapper = document.createElement('div');
-  wrapper.style.width = width + 'px';
-  wrapper.style.height = height + 'px';
-  wrapper.style.overflow = 'hidden';
-  wrapper.style.display = 'block';
-  wrapper.style.marginBottom = '15px';
-  
-  img.parentNode.insertBefore(wrapper, img);
-  wrapper.appendChild(img);
+    const wrapper = document.createElement('div');
+    wrapper.style.width = width + 'px';
+    wrapper.style.height = height + 'px';
+    wrapper.style.overflow = 'hidden';
+    wrapper.style.display = 'block';
+    wrapper.style.marginBottom = '15px';
+    
+    img.parentNode.insertBefore(wrapper, img);
+    wrapper.appendChild(img);
 
-  // Effet zoom
-  wrapper.addEventListener('mouseenter', () => {
-    img.style.transform = 'scale(1.1)';
+    wrapper.addEventListener('mouseenter', () => {
+      img.style.transform = 'scale(1.1)';
+    });
+    wrapper.addEventListener('mouseleave', () => {
+      img.style.transform = 'scale(1)';
+    });
   });
-  wrapper.addEventListener('mouseleave', () => {
-    img.style.transform = 'scale(1)';
-  });
+
+  // Si l'image est déjà chargée (cache du navigateur)
+  if (img.complete) {
+    img.dispatchEvent(new Event('load'));
+  }
 });
   
 
