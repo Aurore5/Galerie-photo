@@ -4,7 +4,32 @@
   overscroll-behavior-y: none; /* bloque le rebond vertical */
 }
 
-body { font-family: Work sans; line-height: 1.6; color: #333; }
+@font-face {
+  font-family: "P22 Underground CY medium";
+  src: url("P22UndergroundCYMedium.ttf") format("truetype");
+  font-style: normal;
+  font-display: swap;
+}
+
+body { font-family: "P22 Underground CY medium", sans-serif;; line-height: 1.6; color: #333; }
+
+@font-face {
+  font-family: "P22 Underground CY heavy";
+  src: url("P22UndergroundCY-Heavy.ttf") format("truetype");
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "P22 Underground CY demibold";
+  src: url("P22UndergroundCYDemiBold.ttf") format("truetype");
+  font-style: normal;
+  font-display: swap;
+}
+
+h2 {
+  font-family: "P22 Underground CY demibold", sans-serif;
+}
 
 /* Header */
 header {
@@ -20,9 +45,12 @@ header {
 
 header h1 {
   font-size: 1.6rem;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: "P22 Underground CY heavy", sans-serif;
   font-weight: bold;
   margin: 0;
+}
+header h1 a:hover {
+  color: black; /* devient doré au survol */
 }
 
 ul, li {
@@ -298,6 +326,7 @@ a:hover {
 
 .info-container .about p a {
   text-decoration-line: underline;
+  font-family: "P22 Underground CY demibold";
 }
 
 /* Responsive */
@@ -406,6 +435,7 @@ footer .contact a:hover {
 }
 
 .right-side {
+  font-family: "P22 Underground CY medium", sans-serif;
   flex: 1;                    
   display: flex;
   flex-direction: column;
