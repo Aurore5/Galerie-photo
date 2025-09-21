@@ -317,12 +317,13 @@ a:hover {
   text-align: left;
   padding-right: 50px;
   justify-content: flex-start;
+  margin-bottom: 10vh;
 }
 
 .info-container .about h2 {
   text-align: center;
   justify-content: flex-start;
-  margin-top: 175px;
+  margin-top: 15vh;
   margin-bottom: 10px;
 }
 
@@ -338,6 +339,8 @@ a:hover {
     text-align: left;
   }
   .imginfo{
+    margin-left: 0px;
+    max-width: 100%;
     align-items: center;
   }
 }
