@@ -70,6 +70,12 @@ nav ul {
   margin: 0;
 }
 
+@media screen and (max-width: 768px) {
+  nav ul {
+    gap: 35px;
+  }
+}
+
 nav a {
   color: black;
   font-size: 16px;
@@ -453,6 +459,7 @@ footer .contact a:hover {
 
 .contact-title {
   margin-bottom: 30px;
+  margin-top: 3vh;
 }
 
 .form-wrapper {
