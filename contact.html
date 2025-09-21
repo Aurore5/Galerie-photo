@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon Portfolio Photo</title>
+  <!-- Lien vers le CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1><li><a href="index.html">NICOLAS VASSEUR</a></li></h1>
+    <nav>
+    <ul class="main-menu">
+      <li><a href="index.html">Home</a></li>
+
+      <!-- dropdown correct : li -> a + ul.submenu -->
+      <li class="dropdown">
+        <a href="#" class="drop-toggle" aria-haspopup="true" aria-expanded="false">Portfolio  ▾</a>
+        <ul class="submenu" aria-label="Sous-menu Mes projets">
+          <li><a href="exposition.html">Urban Vibes</a></li>
+          <li><a href="echec.html">Checkmate</a></li>
+          <li><a href="musee.html">Elegance</a></li>
+          <li><a href="plage.html">Shoreline</a></li>
+          <li><a href="sport.html">Raw Strenght</a></li>
+        </ul>
+      </li>
+      <li><a href="apropos.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+  </nav>
+  </header>
+
+
+ <div class="contact-container">
+  <div class="left-side">
+    <p>Be sure to include your location and the details of your project.
+        <br>
+        <br>
+        Forms not your thing ? Email me directly : <a href="mailto:nicolasvasseur.pictures@gmail.com">nicolasvasseur.pictures@gmail.com</a>
+    </p>
+  </div>
+  <div class="right-side">
+    <h2 class="contact-title">Contact form</h2>
+    <div class="form-wrapper">
+      <form id="contactForm">
+        <label for="name">Nom* :</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email* :</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Message* :</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Envoyer</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+    <footer>
+    <p>&copy; 2025 Mon Portfolio - Tous droits réservés</p>
+    <section class="contact" id="contact">
+    <a href="mailto:nicolasvasseur.pictures@gmail.com">Email</a>
+    <a href="https://instagram.com/Nico00923" target="_blank">Instagram</a>
+  </section>
+  </footer>
+
+  <!-- Lien vers le JavaScript -->
+  <script src="javascript.js"></script>
+
+
+</body>
+</html>
