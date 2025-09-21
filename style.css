@@ -316,10 +316,12 @@ a:hover {
   flex: 1; /* prend la moitié chacun */
   text-align: left;
   padding-right: 50px;
+  justify-content: flex-start;
 }
 
 .info-container .about h2 {
   text-align: center;
+  justify-content: flex-start;
   margin-top: 175px;
   margin-bottom: 10px;
 }
@@ -435,7 +437,7 @@ footer .contact a:hover {
 }
 
 .right-side {
-  font-family: "P22 Underground CY medium", sans-serif;
+  font-family: "P22 Underground CY demibold", sans-serif;
   flex: 1;                    
   display: flex;
   flex-direction: column;
@@ -488,10 +490,14 @@ form button {
   border-radius: 6px;
   font-size: 16px;
   cursor: pointer;
+  font-family: "P22 Underground CY demibold", sans-serif;
 }
 
 form button:hover {
-  background-color: gold;
+  background: #fff;
+  color: #222;
+  border: 2px solid #222;
+  
 }
 
 /* Mobile */
