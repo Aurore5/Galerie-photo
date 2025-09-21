@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let intervalId;
     function startInterval() {
       if (intervalId) clearInterval(intervalId);
-      if (images.length > 1) intervalId = setInterval(rotate, 3000);
+      if (images.length > 1) intervalId = setInterval(rotate, 5000);
     }
     function resetInterval() {
       clearInterval(intervalId);
@@ -89,18 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
     console.warn('Carousel : éléments manquants. mainImage, thumbnails-left ou thumbnails-right introuvable.');
   }
 
-  // ---------- SLIDESHOW ----------
-  const slides = document.querySelectorAll('.slideshow .slide');
-  if (slides.length > 0) {
-    let slideIndex = 0;
-    slides[0].classList.add('active');
-    function changeSlide() {
-      slides[slideIndex].classList.remove('active');
-      slideIndex = (slideIndex + 1) % slides.length;
-      slides[slideIndex].classList.add('active');
-    }
-    setInterval(changeSlide, 4000);
-  }
 
   // ---------- SHUFFLE DES GALERIES ----------
   function shuffle(array) {
@@ -120,6 +108,34 @@ document.addEventListener('DOMContentLoaded', () => {
       shuffledImages.forEach(img => gallery.appendChild(img));
     }
   });
+
+  const images = document.querySelectorAll('.gallery img');
+
+images.forEach(img => {
+  // On récupère les dimensions initiales
+  const width = img.clientWidth;
+  const height = img.clientHeight;
+
+  // On crée un wrapper temporaire pour contenir le zoom
+  const wrapper = document.createElement('div');
+  wrapper.style.width = width + 'px';
+  wrapper.style.height = height + 'px';
+  wrapper.style.overflow = 'hidden';
+  wrapper.style.display = 'block';
+  wrapper.style.marginBottom = '15px';
+  
+  img.parentNode.insertBefore(wrapper, img);
+  wrapper.appendChild(img);
+
+  // Effet zoom
+  wrapper.addEventListener('mouseenter', () => {
+    img.style.transform = 'scale(1.1)';
+  });
+  wrapper.addEventListener('mouseleave', () => {
+    img.style.transform = 'scale(1)';
+  });
+});
+  
 
   // ---------- LIGHTBOX GLOBAL (s'il existe) ----------
   const lightbox = document.getElementById('lightbox');
@@ -207,5 +223,29 @@ document.addEventListener('DOMContentLoaded', () => {
       window.scrollTo({ top: targetPosition, behavior: 'smooth' });
     });
   });
+
+  emailjs.init("PMhO3jRPyzD232VaJ"); // remplace par ta clé EmailJS
+
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const message = document.getElementById("message").value;
+
+      emailjs.send("service_7l5jly7", "template_xzlsenk", {
+        from_name: name,
+        from_email: email,
+        message: message,
+        title: "Formulaire Contact", // pour {{title}} dans le template
+        reply_to: email // reply-to vers l'utilisateur
+      })
+      .then(() => {
+        alert("Message envoyé avec succès !");
+        document.getElementById("contactForm").reset();
+      }, (err) => {
+        alert("Erreur : " + JSON.stringify(err));
+      });
+    });
 
 }); // DOMContentLoaded
