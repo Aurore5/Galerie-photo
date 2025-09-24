@@ -343,7 +343,13 @@ a:hover {
   .info-container {
     flex-direction: column;
     text-align: left;
+    align-items: center;
   }
+
+  .info-container .about h2 {
+    margin-top: 5vh;
+}
+
   .imginfo{
     margin-left: 0px;
     max-width: 100%;
@@ -392,6 +398,14 @@ footer .contact a:hover {
     margin-top: 5vh;
   }
 
+  .page-speciale .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* pour être sûr qu’il passe au-dessus du contenu */
+  }
+
   footer p {
     margin: 0;
     margin-left: 10px;
@@ -402,7 +416,7 @@ footer .contact a:hover {
     text-align: right;
     margin-right: 10px;
     display: flex;             /* force les liens sur une ligne */
-    gap: 10px;                 /* espace entre eux */
+    gap: 3px;                 /* espace entre eux */
   }
 
   footer .contact a {
