@@ -386,6 +386,34 @@ footer .contact a:hover {
   color: #222;
 }
 
+@media (max-width: 768px) {
+  footer {
+    padding: 10px;
+}
+
+footer p {
+  margin: 0; /* enlever le margin qui décale */
+  margin-left: 10px;
+  font-size: 13px;
+}
+
+footer .contact {
+  text-align: right;
+  margin-right: 15px;
+}
+
+footer .contact a {
+  display: inline-block;
+  margin-left: 10px; /* espace entre les liens */
+  padding: 5px 15px;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #fff;
+  transition: background 0.3s, color 0.3s;
+}
+}
+
 
 /* Lightbox */
 .lightbox {
