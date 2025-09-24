@@ -344,8 +344,9 @@ a:hover {
     flex-direction: column;
     text-align: left;
     align-items: center;
-    justify-content: content;
+    justify-content: center;
   }
+  
 
   .info-container .about h2 {
     margin-top: 5vh;
@@ -418,13 +419,13 @@ footer .contact a:hover {
 
   footer p {
     margin: 0;
-    margin-left: 10px;
-    font-size: 13px;
+    margin-left: 5px;
+    font-size: 12px;
   }
 
   footer .contact {
     text-align: right;
-    margin-right: 10px;
+    margin-right: 5px;
     display: flex;
     gap: 3px;
   }
