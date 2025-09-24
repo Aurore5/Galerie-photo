@@ -437,7 +437,7 @@ footer .contact a:hover {
   }
 
   footer .contact a {
-    margin-left: 0;  /* supprime le gros espace hérité */
+    margin-left: 3;  /* supprime le gros espace hérité */
     display: inline-block;
     padding: 5px 5px;
     font-size: 12px;
