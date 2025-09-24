@@ -349,6 +349,8 @@ a:hover {
   .info-container .about {
     width: 100%;        /* prend toute la largeur */
     padding: 0 20px;    /* petit padding interne */
+    justify-content: flex-start;
+    align-items: flex-start; /* au lieu de center */
   }
   
 
@@ -435,6 +437,7 @@ footer .contact a:hover {
   }
 
   footer .contact a {
+    margin-left: 0;  /* supprime le gros espace hérité */
     display: inline-block;
     padding: 5px 5px;
     font-size: 12px;
