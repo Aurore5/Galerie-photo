@@ -344,6 +344,7 @@ a:hover {
     flex-direction: column;
     text-align: left;
     align-items: center;
+    justify-content: content;
   }
 
   .info-container .about h2 {
@@ -393,17 +394,26 @@ footer .contact a:hover {
 }
 
 @media (max-width: 768px) {
+  /* Footer normal en mobile */
   footer {
     padding: 10px;
-    margin-top: 5vh;
+    /* ⚠️ enlève margin-top sinon il décale ton footer fixé */
+    margin-top: 0; 
   }
 
-  .page-speciale .footer {
+  /* Footer fixé uniquement sur la page spéciale */
+  .page-speciale footer {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    z-index: 1000; /* pour être sûr qu’il passe au-dessus du contenu */
+    z-index: 1000;
+  }
+
+  /* Ajoute du padding en bas du body de la page spéciale 
+     pour éviter que le contenu passe sous le footer */
+  .page-speciale {
+    padding-bottom: 70px; /* ajuste selon la hauteur réelle du footer */
   }
 
   footer p {
@@ -415,14 +425,14 @@ footer .contact a:hover {
   footer .contact {
     text-align: right;
     margin-right: 10px;
-    display: flex;             /* force les liens sur une ligne */
-    gap: 3px;                 /* espace entre eux */
+    display: flex;
+    gap: 3px;
   }
 
   footer .contact a {
     display: inline-block;
-    padding: 5px 10px;         /* boutons plus petits */
-    font-size: 12px;           /* texte réduit */
+    padding: 5px 10px;
+    font-size: 12px;
     border: 2px solid #fff;
     border-radius: 5px;
     text-decoration: none;
