@@ -390,27 +390,31 @@ footer .contact a:hover {
   footer {
     padding: 10px;
     margin-top: 5vh;
-}
+  }
 
-footer p {
-  margin: 0; /* enlever le margin qui décale */
-  margin-left: 10px;
-  font-size: 13px;
-}
+  footer p {
+    margin: 0;
+    margin-left: 10px;
+    font-size: 13px;
+  }
 
-footer .contact {
-  text-align: right;
-  margin-right: 10px;
-}
+  footer .contact {
+    text-align: right;
+    margin-right: 10px;
+    display: flex;             /* force les liens sur une ligne */
+    gap: 10px;                 /* espace entre eux */
+  }
 
-footer .contact a {
-  display: inline-block;
-  border: 2px solid #fff;
-  border-radius: 5px;
-  text-decoration: none;
-  color: #fff;
-  transition: background 0.3s, color 0.3s;
-}
+  footer .contact a {
+    display: inline-block;
+    padding: 5px 10px;         /* boutons plus petits */
+    font-size: 12px;           /* texte réduit */
+    border: 2px solid #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+    transition: background 0.3s, color 0.3s;
+  }
 }
 
 
