@@ -433,7 +433,7 @@ footer .contact a:hover {
     text-align: right;
     margin-right: 5px;
     display: flex;
-    gap: 3px;
+    gap: 6px;
   }
 
   footer .contact a {
