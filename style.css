@@ -589,6 +589,7 @@ form button:hover {
     justify-content: flex-start;
     margin-bottom: 4vh;
     margin-right: 0px;
+    padding: 0px;
   }
 
   .right-side {
