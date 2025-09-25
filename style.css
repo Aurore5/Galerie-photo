@@ -367,6 +367,7 @@ a:hover {
     margin: 0px;
     padding: 0px 0px;
     margin-top: 4vh;
+    margin-bottom: 1vh;   /* pour séparer du p */
   }
 
   .imginfo{
