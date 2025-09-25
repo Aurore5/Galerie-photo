@@ -355,6 +355,7 @@ a:hover {
   
 
   .info-container .about h2 {
+    width: 100%;        /* prend toute la largeur */
     margin-top: 4vh;
 }
 
@@ -565,6 +566,7 @@ form button {
   font-size: 16px;
   cursor: pointer;
   font-family: "P22 Underground CY demibold", sans-serif;
+  margin-bottom: 3vh;
 }
 
 form button:hover {
