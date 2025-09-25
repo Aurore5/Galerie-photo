@@ -357,6 +357,7 @@ a:hover {
   .info-container .about h2 {
     width: 100%;        /* prend toute la largeur */
     margin-top: 4vh;
+    font-size: 1.8rem; /* mobile */
 }
 
   .imginfo{
@@ -566,7 +567,7 @@ form button {
   font-size: 16px;
   cursor: pointer;
   font-family: "P22 Underground CY demibold", sans-serif;
-  margin-bottom: 3vh;
+  margin-bottom: 2vh;
 }
 
 form button:hover {
@@ -585,16 +586,15 @@ form button:hover {
   }
 
   .left-side {
-    order: 2;                /* texte sous le formulaire */
-    width: 100%;
-    align-items: center;
-    text-align: left;
-    justify-content: center;
-    margin-top: 0px;
-    margin-bottom: 3vh;
-    margin-right: 0px;
-    padding: 0px;
-  }
+  order: 2;
+  width: 100%;
+  display: flex;
+  justify-content: center;   /* centre le bloc horizontalement */
+  align-items: center;       /* centre verticalement (optionnel) */
+  text-align: left;          /* texte aligné à gauche */
+  margin: 0 auto;            /* recentre le conteneur */
+  padding: 0;
+}
 
   .right-side {
     order: 1;
