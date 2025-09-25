@@ -339,7 +339,7 @@ a:hover {
 }
 
 /* Responsive */
-@media (max-width: 1000px) {
+@media (max-width: 1024px) {
   .info-container {
     flex-direction: column;
     align-items: flex-start; /* au lieu de center */
@@ -584,11 +584,11 @@ form button:hover {
 
   .left-side {
     order: 2;                /* texte sous le formulaire */
+    width: 100%;
+    align-items: center;
     text-align: left;
-    width: 100%;        /* prend toute la largeur */
-    padding: 0 20px;    /* petit padding interne */
-    justify-content: flex-start;
-    align-items: flex-start; /* au lieu de center */
+    justify-content: center;
+    margin-top: 0px;
     margin-bottom: 3vh;
     margin-right: 0px;
     padding: 0px;
