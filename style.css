@@ -357,10 +357,11 @@ a:hover {
   .info-container .about h2 {
     width: 100%;        /* prend toute la largeur */
     margin-top: 4vh;
-    font-size: 1.8rem; /* mobile */
-}
+  }
 
   .imginfo{
+    margin: 0px;
+    padding: 0px;
     margin-left: 0px;
     max-width: 100%;
     align-items: center;
@@ -580,22 +581,22 @@ form button:hover {
 /* Mobile */
 @media (max-width: 768px) {
   .contact-container {
-    flex-direction: column;  /* empile verticalement */
-    height: 100vh;           /* hauteur totale */
-    padding: 20px;
+    flex-direction: column;
+    width: 100%;
+    padding: 30px;
+    margin-bottom: 3vh;
   }
 
   .left-side {
   order: 2;
   width: 100%;
-  max-width: 500px;       /* limite la largeur du bloc pour que le texte ne s’étale pas */
   display: flex;
   justify-content: center;  /* texte aligné à gauche dans le bloc */
   align-items: center;          /* centre verticalement le bloc */
-  text-align: left;
-  margin: 0 auto;               /* centre le bloc horizontalement dans la page */
-  padding: 0;
+  margin: 0px ;               /* centre le bloc horizontalement dans la page */
+  padding: 0px 0px;
   text-align: left;             /* texte aligné à gauche */
+  margin-bottom: 3vh;
 }
 
   .right-side {
