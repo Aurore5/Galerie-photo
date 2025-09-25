@@ -357,6 +357,8 @@ a:hover {
 
   .info-container .about h2 {
     width: 100%;        /* prend toute la largeur */
+    margin: 0px;
+    padding: 0px 0px;
     margin-top: 4vh;
   }
 
