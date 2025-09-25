@@ -588,12 +588,13 @@ form button:hover {
   .left-side {
   order: 2;
   width: 100%;
+  max-width: 500px;       /* limite la largeur du bloc pour que le texte ne s’étale pas */
   display: flex;
-  justify-content: center;   /* centre le bloc horizontalement */
-  align-items: center;       /* centre verticalement (optionnel) */
-  text-align: left;          /* texte aligné à gauche */
-  margin: 0 auto;            /* recentre le conteneur */
+  justify-content: flex-start;  /* texte aligné à gauche dans le bloc */
+  align-items: center;          /* centre verticalement le bloc */
+  margin: 0 auto;               /* centre le bloc horizontalement dans la page */
   padding: 0;
+  text-align: left;             /* texte aligné à gauche */
 }
 
   .right-side {
