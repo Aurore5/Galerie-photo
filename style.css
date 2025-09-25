@@ -212,7 +212,7 @@ a:hover {
   margin-right: 5px;
 }
 } */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
   .thumbnails-left,
   .thumbnails-right {
     display: none !important;
@@ -400,7 +400,7 @@ footer .contact a:hover {
   color: #222;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   /* Footer normal en mobile */
   footer {
     padding: 10px;
@@ -517,6 +517,7 @@ footer .contact a:hover {
   align-items: flex-start;    
   padding: 20px;
   margin-right: 20px; /* ajoute un espace à droite */
+  margin-bottom: 15px;
   margin-top: -55px;
 }
 
@@ -592,8 +593,10 @@ form button:hover {
   .right-side {
     order: 1;
     width: 100%;
+    margin-top: 5vh;
     justify-content: center;  /* centre verticalement le formulaire */
     margin-right: 0px; /* ajoute un espace à droite */
+    
   }
 }
 
