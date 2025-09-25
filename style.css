@@ -356,6 +356,10 @@ a:hover {
     justify-content: flex-start;
     align-items: flex-start; /* au lieu de center */
   }
+
+  .info-container .about p {
+  font-size:15px;
+}
   
 
   .info-container .about h2 {
