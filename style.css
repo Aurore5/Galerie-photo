@@ -584,16 +584,17 @@ form button:hover {
 
   .left-side {
     order: 2;                /* texte sous le formulaire */
-    margin-top: 20px;
     width: 100%;
     align-items: flex-start;
     justify-content: flex-start;
+    margin-bottom: 4vh;
+    margin-right: 0px;
   }
 
   .right-side {
     order: 1;
     width: 100%;
-    margin-top: 5vh;
+    margin-top: 4vh;
     justify-content: center;  /* centre verticalement le formulaire */
     margin-right: 0px; /* ajoute un espace à droite */
     
