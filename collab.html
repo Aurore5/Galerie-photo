@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon Portfolio Photo</title>
+  <!-- Lien vers le CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1><li><a href="index.html">NICOLAS VASSEUR</a></li></h1>
+    <nav>
+    <ul class="main-menu">
+      <li><a href="index.html">Home</a></li>
+
+      <!-- dropdown correct : li -> a + ul.submenu -->
+      <li class="dropdown">
+        <a href="#" class="drop-toggle" aria-haspopup="true" aria-expanded="false">Portfolio  ▾</a>
+        <ul class="submenu" aria-label="Sous-menu Mes projets">
+          <li><a href="exposition.html">Urban Vibes</a></li>
+          <li><a href="echec.html">Checkmate</a></li>
+          <li><a href="musee.html">Elegance</a></li>
+          <li><a href="plage.html">Shoreline</a></li>
+          <li><a href="sport.html">Raw Strenght</a></li>
+          <li><a href="autumn.html">Autumn</a></li>
+          <li><a href="collab.html">Collab with H. Bruhat</a></li>
+        </ul>
+      </li>
+      <li><a href="apropos.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+  </nav>
+  </header>
+<!--
+  <section id="photo1">
+    <img src="img/ballon_photo2.webp" alt="Ballon photo 2" class="photochoisie">
+  </section>-->
+
+  <section class="gallery" id="galerie">
+    <img src="img/collab1.webp" alt="Collaboration 1">
+    <img src="img/collab2.jpg" alt="Collaboration 2">
+    <img src="img/collab3.jpg" alt="Collaboration 3">
+    </section>
+
+
+    <footer>
+    <p>&copy; Nicolas Vasseur - All rights reserved</p>
+    <section class="contact" id="contact">
+    <a href="mailto:nicolasvasseur.pictures@gmail.com">Email</a>
+    <a href="https://instagram.com/Nico00923" target="_blank">Instagram</a>
+  </section>
+  </footer>
+
+     <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <span class="arrow left">&#10094;</span>
+    <img src="" alt="Photo en grand">
+    <span class="arrow right">&#10095;</span>
+  </div>
+
+    <script src="javascript.js" defer></script>
+
+</body>
+
+</html>
