@@ -126,12 +126,17 @@ images.forEach(img => {
     img.parentNode.insertBefore(wrapper, img);
     wrapper.appendChild(img);
 
-    wrapper.addEventListener('mouseenter', () => {
-      img.style.transform = 'scale(1.1)';
-    });
-    wrapper.addEventListener('mouseleave', () => {
-      img.style.transform = 'scale(1)';
-    });
+    const canHover = window.matchMedia("(hover: hover)").matches;
+
+if (canHover) {
+  wrapper.addEventListener('mouseenter', () => {
+    img.style.transform = 'scale(1.1)';
+  });
+
+  wrapper.addEventListener('mouseleave', () => {
+    img.style.transform = 'scale(1)';
+  });
+}
   });
 
   // Si l'image est déjà chargée (cache du navigateur)
