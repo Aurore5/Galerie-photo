@@ -285,8 +285,24 @@ a:hover {
   touch-action: pan-y;
 }
 
+.gallery-wrapper {
+  overflow: hidden;   /* empêche l’image de dépasser */
+  display: block;     
+  margin-bottom: 15px;
+  width: 100%;        /* prend toute la largeur du parent */
+  height: auto;       /* ou fixe si tu veux */
+}
+
+.gallery-wrapper img {
+  width: 100%;        /* remplit le wrapper */
+  height: auto;       
+  transition: transform 0.3s ease, filter 0.3s ease;
+  will-change: transform;
+  touch-action: pan-y;
+}
+
 @media (hover: hover) and (pointer: fine) {
-  .gallery img:hover {
+  .gallery-wrapper img:hover {
     transform: scale(1.05);
     filter: brightness(0.6);
   }
