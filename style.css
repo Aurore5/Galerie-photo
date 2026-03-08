@@ -282,7 +282,7 @@ a:hover {
   transition: transform 0.3s ease, filter 0.3s ease;
   cursor: pointer;
   will-change: transform; /* optimise l'animation */
-  touch-action: pan-y;
+  /*touch-action: pan-y;*/
 }
 
 .gallery-wrapper {
@@ -298,7 +298,7 @@ a:hover {
   height: auto;       
   transition: transform 0.3s ease, filter 0.3s ease;
   will-change: transform;
-  touch-action: pan-y;
+  /*touch-action: pan-y;*/
 }
 
 /* Mobile : pas de zoom au tap */
