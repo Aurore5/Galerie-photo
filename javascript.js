@@ -122,6 +122,7 @@ images.forEach(img => {
     wrapper.style.overflow = 'hidden';
     wrapper.style.display = 'block';
     wrapper.style.marginBottom = '15px';
+    wrapper.style.touchAction = "pan-y";
     
     img.parentNode.insertBefore(wrapper, img);
     wrapper.appendChild(img);
