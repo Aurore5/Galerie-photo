@@ -282,6 +282,7 @@ a:hover {
   transition: transform 0.3s ease;
   cursor: pointer;;
   will-change: transform; /* optimise l'animation */
+  touch-action: pan-y;
 }
 
 
@@ -291,6 +292,10 @@ a:hover {
   /* léger zoom */
 }
 
+.gallery2 img:hover { 
+  filter: brightness(1);
+  /* léger zoom */
+}
 
 /* Responsive */
 @media (max-width: 1000px) {
@@ -299,6 +304,7 @@ a:hover {
 @media (max-width: 600px) {
   .gallery { column-count: 1; }
 }
+
 
 .imginfo{
   display: block;       /* nécessaire pour que margin auto fonctionne */
