@@ -309,6 +309,10 @@ a:hover {
   /*touch-action: pan-y;*/
 }
 
+.gallery img, .gallery-wrapper {
+  touch-action: manipulation;
+}
+
 /* Mobile : pas de zoom au tap */
 @media (hover: none) and (pointer: coarse) {
   .gallery-wrapper img {
