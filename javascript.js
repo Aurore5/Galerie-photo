@@ -117,8 +117,8 @@ images.forEach(img => {
     const height = img.clientHeight;
 
     const wrapper = document.createElement('div');
-    wrapper.style.width = width + 'px';
-    wrapper.style.height = height + 'px';
+    //wrapper.style.width = width + 'px';
+    //wrapper.style.height = height + 'px';
     wrapper.style.overflow = 'hidden';
     wrapper.style.display = 'block';
     wrapper.style.marginBottom = '15px';
