@@ -280,7 +280,7 @@ a:hover {
   width: 100%;
   height: auto;
   transition: transform 0.3s ease;
-  cursor: pointer;;
+  cursor: pointer;
   will-change: transform; /* optimise l'animation */
   touch-action: pan-y;
 }
