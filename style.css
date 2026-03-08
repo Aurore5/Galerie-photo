@@ -1,260 +1,634 @@
-document.addEventListener('DOMContentLoaded', () => {
-
-  // ---------- dropdown (inchangé) ----------
-  document.querySelectorAll('.dropdown > a').forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      this.parentElement.classList.toggle('open');
-    });
-  });
-
-  // ---------- CAROUSEL (sécurisé) ----------
-  const mainImage = document.getElementById("mainImage");
-  const thumbnailsLeft = document.querySelector(".thumbnails-left");
-  const thumbnailsRight = document.querySelector(".thumbnails-right");
-
-  if (mainImage && thumbnailsLeft && thumbnailsRight) {
-    // assure une transition si tu veux un fondu propre
-    if (!mainImage.style.transition) mainImage.style.transition = 'opacity 0.5s ease';
-
-    let images = [
-      mainImage.src,
-      ...Array.from(document.querySelectorAll(".thumbnails-left img, .thumbnails-right img")).map(img => img.src)
-    ].filter(Boolean);
-
-    function renderCarousel() {
-      if (!images.length) return;
-      mainImage.src = images[0];
-
-      thumbnailsLeft.innerHTML = "";
-      thumbnailsRight.innerHTML = "";
-
-      const thumbs = images.slice(1);
-      const half = Math.ceil(thumbs.length / 2);
-
-      thumbs.slice(0, half).forEach(src => thumbnailsLeft.appendChild(createThumbnail(src)));
-      thumbs.slice(half).forEach(src => thumbnailsRight.appendChild(createThumbnail(src)));
-    }
-
-    function createThumbnail(src) {
-      const img = document.createElement("img");
-      // si ta règle de taille fonctionne, sinon tu peux simplement img.src = src;
-      img.src = src.replace(/\/\d+\/\d+/, "/180/240");
-      img.addEventListener("click", () => rotateTo(src));
-      return img;
-    }
-
-    function fadeOut(element, callback) {
-      element.style.opacity = 0;
-      setTimeout(callback, 200);
-    }
-    function fadeIn(element) {
-      setTimeout(() => element.style.opacity = 1, 50);
-    }
-
-    function rotate() {
-      if (images.length <= 1) return;
-      fadeOut(mainImage, () => {
-        images.push(images.shift());
-        renderCarousel();
-        fadeIn(mainImage);
-      });
-    }
-
-    function rotateTo(src) {
-      if (images.length <= 1) return;
-      // protège la boucle: si la miniature n'existe pas, on retourne
-      if (images.indexOf(src) === -1) return;
-      // faire tourner jusqu'à ce que src soit en position 1
-      while (images[1] !== src && images.length > 1) {
-        images.push(images.shift());
-      }
-      rotate();
-      resetInterval();
-    }
-
-    let intervalId;
-    function startInterval() {
-      if (intervalId) clearInterval(intervalId);
-      if (images.length > 1) intervalId = setInterval(rotate, 5000);
-    }
-    function resetInterval() {
-      clearInterval(intervalId);
-      startInterval();
-    }
-
-    renderCarousel();
-    startInterval();
-  } else {
-    console.warn('Carousel : éléments manquants. mainImage, thumbnails-left ou thumbnails-right introuvable.');
-  }
-
-
-  // ---------- SHUFFLE DES GALERIES ----------
-  function shuffle(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-  }
-
-  const galleries = document.querySelectorAll('.gallery');
-  galleries.forEach(gallery => {
-    const imgs = Array.from(gallery.querySelectorAll('img'));
-    if (imgs.length > 0) {
-      const shuffledImages = shuffle(imgs.slice());
-      gallery.innerHTML = '';
-      shuffledImages.forEach(img => gallery.appendChild(img));
-    }
-  });
-
-  const images = document.querySelectorAll('.gallery img');
-
-images.forEach(img => {
-  img.addEventListener('load', () => {
-    const width = img.clientWidth;
-    const height = img.clientHeight;
-
-    const wrapper = document.createElement('div');
-    wrapper.style.width = width + 'px';
-    wrapper.style.height = height + 'px';
-    wrapper.style.overflow = 'hidden';
-    wrapper.style.display = 'block';
-    wrapper.style.marginBottom = '15px';
-    
-    img.parentNode.insertBefore(wrapper, img);
-    wrapper.appendChild(img);
-
-    const canHover = window.matchMedia("(hover: hover)").matches;
-
-if (canHover) {
-  wrapper.addEventListener('mouseenter', () => {
-    img.style.transform = 'scale(1.1)';
-  });
-
-  wrapper.addEventListener('mouseleave', () => {
-    img.style.transform = 'scale(1)';
-  });
+/* Reset simple */
+* { margin: 0; padding: 0; box-sizing: border-box; 
+  overscroll-behavior-x: none; /* bloque le rebond horizontal */
+  overscroll-behavior-y: none; /* bloque le rebond vertical */
 }
-  });
 
-  // Si l'image est déjà chargée (cache du navigateur)
-  if (img.complete) {
-    img.dispatchEvent(new Event('load'));
+@font-face {
+  font-family: "P22 Underground CY medium";
+  src: url("P22UndergroundCYMedium.ttf") format("truetype");
+  font-style: normal;
+  font-display: swap;
+}
+
+body { font-family: "P22 Underground CY medium", sans-serif;; line-height: 1.6; color: #333; }
+
+@font-face {
+  font-family: "P22 Underground CY heavy";
+  src: url("P22UndergroundCY-Heavy.ttf") format("truetype");
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "P22 Underground CY demibold";
+  src: url("P22UndergroundCYDemiBold.ttf") format("truetype");
+  font-style: normal;
+  font-display: swap;
+}
+
+h2 {
+  font-family: "P22 Underground CY demibold", sans-serif;
+}
+
+/* Header */
+header {
+  font-size:18px;
+  position: relative;
+  width: 100%;
+  color: black;
+  background-color: white;
+  text-align: center;   /* centre le texte par défaut */
+  padding: 15px 30px;
+  z-index: 1000;
+}
+
+header h1 {
+  font-size: 1.6rem;
+  font-family: "P22 Underground CY heavy", sans-serif;
+  font-weight: bold;
+  margin: 0;
+}
+header h1 a:hover {
+  color: black; /* devient doré au survol */
+}
+
+ul, li {
+  list-style: none;
+}
+
+nav {
+  margin-top: 10px; /* espace entre titre et menu */
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center; /* <-- centre les liens horizontalement */
+  gap: 45px;
+  padding: 0;
+  margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  nav ul {
+    gap: 35px;
   }
-});
+}
+
+nav a {
+  color: black;
+  font-size: 16px;
+  text-decoration: none;
+  font-weight: light;
+
+}
+
+.submenu {
+  display: none;               /* caché par défaut */
+  position: absolute;
+  top: 90%;      /* exactement en dessous du parent */
+  background: white;
+  list-style: none;
+  margin-left: 0;
+  text-align: left;
+  margin: 0;
+  padding: 0px 0;
+  min-width: 120px;
+}
+
+.submenu li {
+  margin: 0;       /* annule tout margin */
+  padding: 0;      /* annule tout padding par défaut */
+}
+
+.submenu li a {
+  padding: 10px 15px;
+  white-space: nowrap;         /* évite que le texte se coupe */
+}
+
+.dropdown.open .submenu {
+  display: block;
+}
+
+.dropdown:hover .submenu {
+  display: block;              /* affiché au survol */
+}
+/* Section accueil (slideshow) */
+
+a {
+  text-decoration: none;
+  color: inherit; /* garde la couleur de base selon l’endroit */
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: gold; /* devient doré au survol */
+}
+
+.carousel-container {
+  margin-left: clamp(10px, 6vw, 80px);
+  margin-right: clamp(10px, 6vw, 80px);
+  margin-top: 25px;
+  display: flex;
+  gap: clamp(15px, 5vw, 30px); /* espace flexible */
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap; /* évite le débordement */
+}
+
+.main-image {
+  max-height: 80vh;
+  width: auto;         /* largeur s’ajuste automatiquement */
+  object-fit: contain;
+  margin-bottom: 30px;
+  flex: 1;
+  transition: opacity 1s ease-in-out;
+  opacity: 1;
+}
+
+/* Miniatures par défaut (mobile) */
+.thumbnails-left,
+.thumbnails-right {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 3vw, 30px); /* espace flexible */
+}
+
+.thumbnails-left img,
+.thumbnails-right img {
+  width: clamp(70px, 12vw, 120px);   /* taille qui s’adapte mais garde max */
+  height: auto;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.3s;
+  filter: brightness(0.6);
+}
+
+.thumbnails-left img:hover,
+.thumbnails-right img:hover {
+  transform: scale(1.05);
+}
+
+/* Version PC / écran large */
+@media screen and (min-width: 1024px) {
+  .thumbnails-left,
+  .thumbnails-right {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(20px, 30px, 40px);
+  }
+
+  .main-image {
+    height: 85vh;
+  /*width: clamp(120px, 25vw, 600px);  /* entre 250px et 600px */
+  margin-bottom: 30px;
+  width: auto;         /* largeur s’ajuste automatiquement */
+  object-fit: contain;
+  transition: opacity 1s ease-in-out;
+  opacity: 1;
+}
+
+  .thumbnails-left img,
+  .thumbnails-right img {
+    width: clamp(70px, 10vw, 220px); /* plus grandes mais limitées */
+  }
+}
+/*
+@media screen and (orientation: portrait) {
+  .main-image {
+    width: 32vw;     
+    height: auto;       
+    object-fit: contain;
+  }
+
+  .thumbnails-left,
+.thumbnails-right {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; 
+  margin-left: 5px;
+  margin-right: 5px;
+}
+} */
+@media screen and (max-width: 1000px) {
+  .thumbnails-left,
+  .thumbnails-right {
+    display: none !important;
+  }
+
+  .carousel-container {
+    gap: 0; /* plus besoin de l’espace latéral */
+  }
+
+  .main-image {
+    margin: 0 auto; /* centre l’image */
+    display: block;
+    max-width: 95vw; /* l’image prend presque toute la largeur */
+    height: auto;
+  }
+}
+
+/*
+.citation {
+  -webkit-column-span: all;
+  column-span: all;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  margin: 0px 0 0 0 !important; /* garde ta marge haute si tu veux 
+
+}
+
+.citation h2 {
+  font-size: clamp(20px, 4vw, 21px);
+  color: #333;
+  background: white; /* ou la couleur de ton fond 
+  padding: 10px 0px;
+  z-index: 1;
+  position: relative;
+  margin: 0;
+  max-width : 100vh;
+  display: inline-block;
+  box-sizing: border-box;
+}*/
+
+
+/**/
+.photochoisie {
+  display: block;       /* nécessaire pour que margin auto fonctionne */
+  margin: 30px auto 0;  /* 50px en haut, centré horizontalement, 0 en bas */
+  width: auto;          /* largeur naturelle de l'image */
+  max-width: 100%;      /* jamais dépasser la largeur de l'écran */
+  height: auto;         /* conserve le ratio */
+  max-height: 80vh;     /* optionnel : pas plus de 80% de la hauteur de l'écran */
+} 
+
+/* Galerie “masonry-like” */ 
+.gallery {
+  column-count: 3;
+  column-gap: 15px;
+  padding: 50px 20px;
+}
+
+.gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+  cursor: pointer;;
+  will-change: transform; /* optimise l'animation */
+  touch-action: pan-y;
+}
+
+
+/*Galerie : effet hover simple */
+.gallery img:hover { 
+  filter: brightness(0.6);
+  /* léger zoom */
+}
+
+.gallery2 img:hover { 
+  filter: brightness(1);
+  /* léger zoom */
+}
+
+/* Responsive */
+@media (max-width: 1000px) {
+  .gallery { column-count: 2; }
+}
+@media (max-width: 600px) {
+  .gallery { column-count: 1; }
+}
+
+
+.imginfo{
+  display: block;       /* nécessaire pour que margin auto fonctionne */
+  margin: 20px; /* 50px en haut, centré horizontalement, 0 en bas */
+  margin-left: 50px;
+  width: auto;          /* largeur naturelle de l'image */
+  max-width: 100%;      /* jamais dépasser la largeur de l'écran */
+  height: auto;         /* conserve le ratio */
+  max-height: 80vh; 
+}
+
+/* A propos */
+.info-container {
+  display: flex;
+  gap: 50px;
+  padding: 20px;
+}
+
+
+.info-container .about {
+  flex: 1; /* prend la moitié chacun */
+  text-align: left;
+  padding-right: 50px;
+  justify-content: flex-start;
+  margin-bottom: 10vh;
+}
+
+.info-container .about h2 {
+  text-align: center;
+  justify-content: flex-start;
+  margin-top: 15vh;
+  margin-bottom: 10px;
+}
+
+.info-container .about p {
+  font-family: "P22 Underground CY medium";
+}
+
+.info-container .about p a {
+  text-decoration-line: underline;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .info-container {
+    flex-direction: column;
+    align-items: flex-start; /* au lieu de center */
+    text-align: left;
+    
+  }
+
+  .info-container .about {
+    width: 100%;        /* prend toute la largeur */
+    padding: 0 20px;    /* petit padding interne */
+    justify-content: flex-start;
+    align-items: flex-start; /* au lieu de center */
+  }
+
+  .info-container .about p {
+  font-size:15px;
+}
   
 
-  // ---------- LIGHTBOX GLOBAL (s'il existe) ----------
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = lightbox ? lightbox.querySelector('img') : null;
-  const leftArrow = document.querySelector('.arrow.left');
-  const rightArrow = document.querySelector('.arrow.right');
-  let currentIndex = 0;
-  let currentGallery = [];
-
-  if (lightbox && lightboxImg) {
-    // attache les handlers après le shuffle (on re-lit les images dans leur nouvel ordre)
-    galleries.forEach(gallery => {
-      const imgs = Array.from(gallery.querySelectorAll('img'));
-      imgs.forEach((img, i) => {
-        img.addEventListener('click', e => {
-          e.stopPropagation();
-          currentGallery = imgs;
-          showImage(i);
-          lightbox.classList.add('active');
-        });
-      });
-    });
-
-    function showImage(index) {
-      if (!lightboxImg || !currentGallery.length) return;
-      const img = currentGallery[index];
-      if (!img) return;
-      lightboxImg.src = img.src;
-      lightboxImg.alt = img.alt || '';
-      currentIndex = index;
-    }
-
-    if (rightArrow) {
-      rightArrow.addEventListener('click', e => {
-        e.stopPropagation();
-        currentIndex = (currentIndex + 1) % currentGallery.length;
-        showImage(currentIndex);
-      });
-    }
-    if (leftArrow) {
-      leftArrow.addEventListener('click', e => {
-        e.stopPropagation();
-        currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
-        showImage(currentIndex);
-      });
-    }
-
-    lightbox.addEventListener('click', e => {
-      if (e.target === lightbox) lightbox.classList.remove('active');
-    });
-
-    document.addEventListener('keydown', e => {
-      if (!lightbox.classList.contains('active')) return;
-      if (e.key === 'ArrowRight') {
-        currentIndex = (currentIndex + 1) % currentGallery.length;
-        showImage(currentIndex);
-      } else if (e.key === 'ArrowLeft') {
-        currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
-        showImage(currentIndex);
-      } else if (e.key === 'Escape') {
-        lightbox.classList.remove('active');
-      }
-    });
-  } else {
-    console.info('Lightbox absent : le comportement d\'ouverture en grand est désactivé.');
+  .info-container .about h2 {
+    width: 100%;        /* prend toute la largeur */
+    margin: 0px;
+    padding: 0px 0px;
+    margin-top: 4vh;
+    margin-bottom: 1vh;   /* pour séparer du p */
   }
 
-  // ---------- SCROLL OFFSET (header fixe) ----------
-  const header = document.querySelector('header');
-  const navLinks = document.querySelectorAll('nav a[href^="#"]');
+  .imginfo{
+    margin: 0px;
+    padding: 0px;
+    margin-left: 0px;
+    max-width: 100%;
+    align-items: center;
+  }
+}
 
-  navLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('href').substring(1);
-      const targetSection = document.getElementById(targetId);
-      if (!targetSection) return;
+footer {
+  display: flex;
+  justify-content: space-between; /* texte à gauche, contact à droite */
+  align-items: center; /* centrage vertical */
+  background: #222;
+  color: white;
+  padding: 15px;
+}
 
-      const headerHeight = header ? header.offsetHeight : 0;
+footer p {
+  margin: 0; /* enlever le margin qui décale */
+  margin-left: 15px;
+  font-size: 15px;
+}
 
-      let extraOffset = 0;
-      if (targetId === "separation") extraOffset = 50;
+footer .contact {
+  text-align: right;
+  margin-right: 20px;
+}
 
-      const targetPosition = targetSection.offsetTop - headerHeight - extraOffset;
-      window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-    });
-  });
+footer .contact a {
+  display: inline-block;
+  margin-left: 20px; /* espace entre les liens */
+  padding: 10px 20px;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #fff;
+  transition: background 0.3s, color 0.3s;
+}
+footer .contact a:hover {
+  background: #fff;
+  color: #222;
+}
 
-  emailjs.init("PMhO3jRPyzD232VaJ"); // remplace par ta clé EmailJS
+@media (max-width: 1000px) {
+  /* Footer normal en mobile */
+  footer {
+    padding: 10px;
+    /* ⚠️ enlève margin-top sinon il décale ton footer fixé */
+    margin-top: 0; 
+  }
 
-    document.getElementById("contactForm").addEventListener("submit", function(e) {
-      e.preventDefault();
+  /* Footer fixé uniquement sur la page spéciale */
+  .page-speciale footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+  }
 
-      const name = document.getElementById("name").value;
-      const email = document.getElementById("email").value;
-      const message = document.getElementById("message").value;
+  /* Ajoute du padding en bas du body de la page spéciale 
+     pour éviter que le contenu passe sous le footer */
+  .page-speciale {
+    padding-bottom: 70px; /* ajuste selon la hauteur réelle du footer */
+  }
 
-      emailjs.send("service_7l5jly7", "template_xzlsenk", {
-        from_name: name,
-        from_email: email,
-        message: message,
-        title: "Formulaire Contact", // pour {{title}} dans le template
-        reply_to: email // reply-to vers l'utilisateur
-      })
-      .then(() => {
-        alert("Message envoyé avec succès !");
-        document.getElementById("contactForm").reset();
-      }, (err) => {
-        alert("Erreur : " + JSON.stringify(err));
-      });
-    });
+  footer p {
+    margin: 0;
+    margin-left: 5px;
+    font-size: 12px;
+  }
 
-}); // DOMContentLoaded
+  footer .contact {
+    text-align: right;
+    margin-right: 5px;
+    display: flex;
+    gap: 6px;
+  }
+
+  footer .contact a {
+    margin-left: 3px;  /* supprime le gros espace hérité */
+    display: inline-block;
+    padding: 5px 5px;
+    font-size: 12px;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+    transition: background 0.3s, color 0.3s;
+  }
+}
+
+
+/* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  top: 0; left: 0;
+  width: 100%; 
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+}
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(255,255,255,0.2);
+}
+.lightbox.active {
+  display: flex;
+}
+
+/* Flèches navigation */
+.lightbox .arrow {
+  position: absolute;
+  top: 50%;
+  font-size: 3rem;
+  color: white;
+  cursor: pointer;
+  user-select: none;
+  padding: 10px;
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.arrow.left { left: 20px; }
+.arrow.right { right: 20px; }
+
+
+.contact-container {
+  height: 81vh;           /* hauteur totale de l'écran */
+  width: 95vw;            /* largeur totale de l'écran */
+  display: flex;           /* deux colonnes */
+  background-color: #fff;
+  padding: 30px;
+  box-sizing: border-box;
+  gap: 20px;               /* espace entre les colonnes */
+}
+
+.left-side {
+  flex: 1;                    
+  display: flex;
+  align-items: center;      /* centre verticalement le texte */
+  justify-content: center;  /* centre horizontalement le texte */
+  padding: 50px;
+  margin-top: -55px;
+}
+
+.right-side {
+  font-family: "P22 Underground CY demibold", sans-serif;
+  flex: 1;                    
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* centre verticalement le formulaire */
+  align-items: flex-start;    
+  padding: 20px;
+  margin-right: 20px; /* ajoute un espace à droite */
+  margin-bottom: 15px;
+  margin-top: 2vh;
+}
+
+.contact-title {
+  margin-bottom: 30px;
+  margin-top: 3vh;
+}
+
+.form-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Formulaire */
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+form label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+form input, form textarea {
+  width: 100%;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+form button {
+  padding: 12px;
+  /*background-color: #007BFF;*/
+  background-color: #222;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  font-family: "P22 Underground CY demibold", sans-serif;
+  margin-bottom: 2vh;
+}
+
+form button:hover {
+  background: #fff;
+  color: #222;
+  border: 2px solid #222;
+  
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    padding: 30px;
+    margin-bottom: 3vh;
+  }
+
+  .left-side {
+  order: 2;
+  width: 100%;
+  display: flex;
+  justify-content: center;  /* texte aligné à gauche dans le bloc */
+  align-items: center;          /* centre verticalement le bloc */
+  margin: 0px ;               /* centre le bloc horizontalement dans la page */
+  padding: 0px 0px;
+  text-align: left;             /* texte aligné à gauche */
+  margin-bottom: 3vh;
+}
+
+  .right-side {
+    order: 1;
+    width: 100%;
+    margin-top: 3vh;
+    justify-content: center;  /* centre verticalement le formulaire */
+    margin-right: 0px; /* ajoute un espace à droite */
+    margin-bottom: 2vh;
+    
+  }
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
