@@ -279,12 +279,18 @@ a:hover {
   display: block;
   width: 100%;
   height: auto;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, filter 0.3s ease;
   cursor: pointer;
   will-change: transform; /* optimise l'animation */
   touch-action: pan-y;
 }
 
+@media (hover: hover) and (pointer: fine) {
+  .gallery img:hover {
+    transform: scale(1.05);
+    filter: brightness(0.6);
+  }
+}
 
 /*Galerie : effet hover simple */
 .gallery img:hover { 
