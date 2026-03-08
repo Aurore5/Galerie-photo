@@ -109,33 +109,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  const images = document.querySelectorAll('.gallery img');
+ document.querySelectorAll('.gallery img').forEach(img => {
+  // Ne pas wrapper deux fois
+  if (img.parentElement.classList.contains('gallery-wrapper')) return;
 
-images.forEach(img => {
-  img.addEventListener('load', () => {
-    const width = img.clientWidth;
-    const height = img.clientHeight;
+  const wrapper = document.createElement('div');
+  wrapper.classList.add('gallery-wrapper');
+  wrapper.style.overflow = 'hidden';  // cache le débordement
+  wrapper.style.display = 'block';
+  wrapper.style.width = '100%';       // largeur du conteneur
+  wrapper.style.height = 'auto';
+  wrapper.style.marginBottom = '15px';
 
-    const wrapper = document.createElement('div');
-    //wrapper.style.width = width + 'px';
-    //wrapper.style.height = height + 'px';
-    wrapper.style.overflow = 'hidden';
-    wrapper.style.display = 'block';
-    wrapper.style.marginBottom = '15px';
-    wrapper.style.touchAction = "pan-y";
-    
-    img.parentNode.insertBefore(wrapper, img);
-    wrapper.appendChild(img);
-
-
-
-  });
-
-  // Si l'image est déjà chargée (cache du navigateur)
-  if (img.complete) {
-    img.dispatchEvent(new Event('load'));
-  }
+  img.parentNode.insertBefore(wrapper, img);
+  wrapper.appendChild(img);
 });
+
   
 
   // ---------- LIGHTBOX GLOBAL (s'il existe) ----------
