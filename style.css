@@ -292,16 +292,6 @@ a:hover {
   }
 }
 
-/*Galerie : effet hover simple */
-.gallery img:hover { 
-  filter: brightness(0.6);
-  /* léger zoom */
-}
-
-.gallery2 img:hover { 
-  filter: brightness(1);
-  /* léger zoom */
-}
 
 /* Responsive */
 @media (max-width: 1000px) {
