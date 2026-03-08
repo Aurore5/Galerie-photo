@@ -126,14 +126,15 @@ images.forEach(img => {
     img.parentNode.insertBefore(wrapper, img);
     wrapper.appendChild(img);
 
-    const canHover = window.matchMedia("(hover: hover)").matches;
+
+const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
 if (canHover) {
-  wrapper.addEventListener('mouseenter', () => {
+  wrapper.addEventListener('pointerenter', () => {
     img.style.transform = 'scale(1.1)';
   });
 
-  wrapper.addEventListener('mouseleave', () => {
+  wrapper.addEventListener('pointerleave', () => {
     img.style.transform = 'scale(1)';
   });
 }
