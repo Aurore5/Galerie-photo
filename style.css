@@ -1,7 +1,15 @@
+
 /* Reset simple */
-* { margin: 0; padding: 0; box-sizing: border-box; 
-  overscroll-behavior-x: none; /* bloque le rebond horizontal */
-  overscroll-behavior-y: none; /* bloque le rebond vertical */
+* { 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
+}
+
+/* On applique le blocage de rebond uniquement au conteneur principal */
+html, body {
+  overscroll-behavior-x: none;
+  overscroll-behavior-y: none;
 }
 
 @font-face {
