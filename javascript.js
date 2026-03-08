@@ -128,17 +128,7 @@ images.forEach(img => {
     wrapper.appendChild(img);
 
 
-const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
-if (canHover) {
-  wrapper.addEventListener('pointerenter', () => {
-    img.style.transform = 'scale(1.1)';
-  });
-
-  wrapper.addEventListener('pointerleave', () => {
-    img.style.transform = 'scale(1)';
-  });
-}
   });
 
   // Si l'image est déjà chargée (cache du navigateur)
